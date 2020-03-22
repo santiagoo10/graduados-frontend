@@ -1,9 +1,27 @@
 import React from "react";
-import { HydraAdmin } from "@api-platform/admin";
+import {
+    HydraAdmin,
+    ResourceGuesser
+} from "@api-platform/admin";
+import authProvider from './authProvider';
+import MyLoginPage from './MyLoginPage';
 
-// Replace with your own API entrypoint
-// For instance if https://example.com/api/books is the path to the collection of book resources, then the entrypoint is https://example.com/api
-export default () => (
-    // <HydraAdmin entrypoint="https://demo.api-platform.com" />
-    <HydraAdmin entrypoint="http://localhost:83/oferta/public/api" />
+const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
+
+export default props => (
+    <HydraAdmin entrypoint={ entrypoint } authProvider={ authProvider } loginPage = {MyLoginPage}>
+
+        <ResourceGuesser name="users" />
+        <ResourceGuesser name="sales" />
+        <ResourceGuesser name="professions" />
+        <ResourceGuesser name="academic_units" />
+        <ResourceGuesser name="stores" />
+        <ResourceGuesser name="zones" />
+        <ResourceGuesser name="cities" />
+        <ResourceGuesser name="provinces" />
+        <ResourceGuesser name="countries" />
+    </HydraAdmin>
+
 );
+
+
