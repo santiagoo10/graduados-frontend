@@ -60,7 +60,7 @@ export default props => (
         <ResourceGuesser name="zones"  list={ZoneList}/>
         <ResourceGuesser name="cities" list={CityList} />
         <ResourceGuesser name="provinces" list={ProvinceList} />
-        <ResourceGuesser name="countries" list={CountryList}  />
+        <ResourceGuesser name="countries" list={CountryList} options={{ label: 'Paises' }} />
     </HydraAdmin>
 
 );
