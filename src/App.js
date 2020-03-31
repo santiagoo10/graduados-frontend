@@ -17,10 +17,6 @@ import {
 const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
 
 
-
-
-
-
 export default props => (
     <HydraAdmin entrypoint={ entrypoint } authProvider={ authProvider } loginPage = {MyLoginPage}>
 
