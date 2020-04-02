@@ -5,33 +5,48 @@ import {
 } from "@api-platform/admin";
 import authProvider from './authProvider';
 import MyLoginPage from './MyLoginPage';
-import { CountryList } from "./countries";
-import { ProvinceList} from "./provinces";
-import { CityList} from "./cities";
-import { ZoneList} from "./zones";
-import {
-    StoreCreate,
-    StoreList
-} from "./stores";
+import { CountryCreate, CountryList, CountryShow, CountryEdit } from "./Controller/countries";
+import { ProvinceList, ProvinceShow, ProvinceEdit, ProvinceCreate} from "./Controller/provinces";
+import { CityCreate, CityEdit, CityList, CityShow} from "./Controller/cities";
+import { ZoneList, ZoneEdit, ZoneShow} from "./Controller/zones";
+import { StoreCreate, StoreList } from "./Controller/stores";
+import { AcademicUnitCreate, AcademicUnitList } from "./Controller/academic_units";
+import { UserList } from "./Controller/users";
+
 
 const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
 
 
+// eslint-disable-next-line react/display-name
 export default props => (
     <HydraAdmin entrypoint={ entrypoint } authProvider={ authProvider } loginPage = {MyLoginPage}>
 
-        <ResourceGuesser name="users" />
+        <ResourceGuesser name="users" list={UserList} />
         <ResourceGuesser name="professions" />
-        <ResourceGuesser name="academic_units" options={{ label: 'Unidades Académicas' }}/>
         <ResourceGuesser name="sales" options={{ label: 'Beneficios' }} />
         <ResourceGuesser name="sale_types"  options={{ label: 'Categorias de Beneficios' }} />
         <ResourceGuesser name="stores" create={StoreCreate} list={StoreList} options={{ label: 'Patrocinadores' }} />
         <ResourceGuesser name="people" />
         <ResourceGuesser name="addresses" />
-        <ResourceGuesser name="zones"  list={ZoneList} options={{ label: 'Zonas' }}/>
-        <ResourceGuesser name="cities" list={CityList} options={{ label: 'Ciudades' }}/>
-        <ResourceGuesser name="provinces" list={ProvinceList} options={{ label: 'Provincias' }} />
-        <ResourceGuesser name="countries" list={CountryList} options={{ label: 'Paises' }} />
+        <ResourceGuesser name="academic_units"
+                         list={AcademicUnitList}
+                         create={AcademicUnitCreate} options={{ label: 'Unidades Académicas' }}/>
+        <ResourceGuesser name="zones"  show={ZoneShow} list={ZoneList} edit={ZoneEdit} options={{ label: 'Zonas' }}/>
+        <ResourceGuesser name="cities"
+                         list={CityList}
+                         show={CityShow}
+                         create={CityCreate}
+                         edit={CityEdit} options={{ label: 'Ciudades' }}/>
+        <ResourceGuesser name="provinces"
+                         create={ProvinceCreate}
+                         edit={ProvinceEdit}
+                         show={ProvinceShow}
+                         list={ProvinceList} options={{ label: 'Provincias' }} />
+        <ResourceGuesser name="countries"
+                         create={CountryCreate}
+                         list={CountryList}
+                         show={CountryShow}
+                         edit={CountryEdit} options={{ label: 'Paises' }} />
     </HydraAdmin>
 
 );
