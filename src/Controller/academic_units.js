@@ -1,5 +1,5 @@
 import React from "react";
-import {CreateGuesser,InputGuesser, ShowGuesser, FieldGuesser, ListGuesser} from "@api-platform/admin";
+import {CreateGuesser,InputGuesser, FieldGuesser, ListGuesser} from "@api-platform/admin";
 
 export const AcademicUnitCreate = props => (
     <CreateGuesser {...props}>

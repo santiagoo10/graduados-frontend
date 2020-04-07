@@ -8,3 +8,12 @@ export const UserList = props => (
         <FieldGuesser source={"isActive"} label={"Activo"}/>
     </ListGuesser>
 );
+
+export const UserCreate = props => (
+    <CreateGuesser {...props}>
+        <InputGuesser source={"email"} label={"Email"}/>
+        <InputGuesser source={"password"} />
+        <InputGuesser source={"username"} label={"Nombre de usuario"}/>
+        <InputGuesser source={"isActive"} />
+    </CreateGuesser>
+);
