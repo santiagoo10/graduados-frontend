@@ -3,6 +3,7 @@ import { FieldGuesser,
          ListGuesser,
          ShowGuesser,
          InputGuesser,
+         CreateGuesser,
          EditGuesser} from "@api-platform/admin";
 
 export const ZoneList = props => (
@@ -33,4 +34,13 @@ export const ZoneShow = props => (
         <FieldGuesser source={"createdAt"} label={"Creado"} addLabel={true} />
         <FieldGuesser source={"updatedAt"} label={"Actualizado"} addLabel={true} />
     </ShowGuesser>
+);
+
+export const ZoneCreate = props => (
+    <CreateGuesser {...props}>
+        <InputGuesser source={"code"} label={"Código"}/>
+        <InputGuesser source={"name"} label={"Nombre"}/>
+        <InputGuesser source={"type"} label={"Tipo"} />
+        <InputGuesser source={"city"} label={"Ciudad"}/>
+    </CreateGuesser>
 );

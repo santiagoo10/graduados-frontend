@@ -11,7 +11,12 @@ export const AddressCreate = props => (
     <CreateGuesser {...props}>
         <InputGuesser source={"street"} label={"Calle"} />
         <InputGuesser source={"number"} label={"Número"} />
-        <AutocompleteInput source={"routeType"} choices={choices} optionText="name" optionValue="id" label={"Tipo de ruta"} />
+        <AutocompleteInput
+            source={"routeType"}
+            choices={choices}
+            optionText="name"
+            optionValue="id"
+            label={"Tipo de ruta"} />
         <InputGuesser source={"routeNumber"} label={"Número de ruta"} />
         <InputGuesser source={"km"} />
         <InputGuesser source={"phoneNumber"} label={"Número de teléfono"} />
@@ -21,15 +26,17 @@ export const AddressCreate = props => (
 
 export const AddressList = props => (
     <ListGuesser {...props}>
-            <FieldGuesser source={"street"} label={"Calle"}/>
-            <FieldGuesser source={"number"} label={"Número"}/>
-            <FieldGuesser source={"phoneNumber"}  label={"Número de teléfono"}/>
-            <FieldGuesser source={"zone"} label={"Zona"}/>
+        <FieldGuesser source={"name"} label={"Nombre"}/>
+        <FieldGuesser source={"street"} label={"Calle"}/>
+        <FieldGuesser source={"number"} label={"Número"}/>
+        <FieldGuesser source={"phoneNumber"}  label={"Número de teléfono"}/>
+        <FieldGuesser source={"zone"} label={"Zona"}/>
     </ListGuesser>
 );
 
 export const AddressShow = props => (
     <ShowGuesser {...props}>
+        <FieldGuesser source={"name"} label={"Nombre"} addLabel={true} />
         <FieldGuesser source={"street"} label={"Calle"} addLabel={true} />
         <FieldGuesser source={"number"} label={"Número"} addLabel={true} />
         <FieldGuesser source={"routeType"} label={"Tipo de ruta"} addLabel={true} />
@@ -46,6 +53,7 @@ export const AddressShow = props => (
 
 export const AddressEdit = props => (
     <EditGuesser {...props}>
+        <InputGuesser source={"name"} label={"Nombre"} />
         <InputGuesser source={"street"} label={"Calle"}/>
         <InputGuesser source={"number"} label={"Número"}/>
         <InputGuesser source={"routeType"} label={"Tipo de ruta"}/>
