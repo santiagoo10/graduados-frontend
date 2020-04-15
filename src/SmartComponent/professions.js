@@ -9,7 +9,7 @@ const choices=[
 ];
 
 export const ProfessionCreate = props => (
-    <CreateGuesser {...props}>
+    <CreateGuesser {...props} title={"Crear Profesion"}>
         <InputGuesser source={"name"} label={"Nombre"} />
         <AutocompleteInput
             source={"type"}
@@ -22,7 +22,7 @@ export const ProfessionCreate = props => (
 );
 
 export const ProfessionShow = props => (
-    <ShowGuesser {...props}>
+    <ShowGuesser {...props} title={"Ver Profesion"}>
         <FieldGuesser source={"name"} label={"Nombre"} addLabel={true} />
         <FieldGuesser source={"type"} addLabel={true}  label={"Tipo"}/>
         <FieldGuesser source={"academicUnit"} label={"Unidad Académica"} addLabel={true} />
@@ -32,7 +32,7 @@ export const ProfessionShow = props => (
 );
 
 export const ProfessionList = props => (
-    <ListGuesser {...props}>
+    <ListGuesser {...props} title={"Profesiones"}>
         <FieldGuesser source={"name"} label={"Nombre"}/>
         <FieldGuesser source={"type"} label={"Tipo"}/>
         <FieldGuesser source={"academicUnit"} label={"Unidad Académica"}/>
@@ -41,7 +41,7 @@ export const ProfessionList = props => (
 
 
 export const ProfessionEdit = props => (
-    <EditGuesser {...props}>
+    <EditGuesser {...props} title={"Editar Profesion"}>
         <InputGuesser source={"name"} label={"Nombre"}/>
         <InputGuesser source={"type"} label={"Tipo"}/>
         <InputGuesser source={"academicUnit"} label={"Unidad Académica"} />

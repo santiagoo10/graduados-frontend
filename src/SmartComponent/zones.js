@@ -7,7 +7,7 @@ import { FieldGuesser,
          EditGuesser} from "@api-platform/admin";
 
 export const ZoneList = props => (
-    <ListGuesser {...props}>
+    <ListGuesser {...props} title={"Zonas"}>
         <FieldGuesser source={"code"} label={"Código"}/>
         <FieldGuesser source={"name"} label={"Nombre"}/>
         <FieldGuesser source={"type"} label={"Tipo"}/>

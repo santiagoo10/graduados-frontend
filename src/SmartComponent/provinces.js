@@ -3,7 +3,7 @@ import { CreateGuesser, EditGuesser, InputGuesser, ShowGuesser, FieldGuesser, Li
 
 
 export const ProvinceCreate = props => (
-    <CreateGuesser {...props}>
+    <CreateGuesser {...props} title={"Crear Provincia"}>
         <InputGuesser source={"code"} label={"Código"}/>
         <InputGuesser source={"name"} label={"Nombre"}/>
         <InputGuesser source={"abbreviation"} label={"Abreviación"}/>
@@ -12,7 +12,7 @@ export const ProvinceCreate = props => (
 );
 
 export const ProvinceList = props => (
-    <ListGuesser {...props}>
+    <ListGuesser {...props} title={"Provincias"}>
         <FieldGuesser source={"code"} label={"Código"}/>
         <FieldGuesser source={"name"} label={"Nombre"}/>
         <FieldGuesser source={"abbreviation"} label={"Abreviación"}/>
@@ -21,7 +21,7 @@ export const ProvinceList = props => (
 );
 
 export const ProvinceShow = props => (
-    <ShowGuesser {...props}>
+    <ShowGuesser {...props} title={"Ver Provincia"}>
         <FieldGuesser source={"code"} label={"Código"} addLabel={true} />
         <FieldGuesser source={"name"} label={"Nombre"} addLabel={true} />
         <FieldGuesser source={"abbreviation"} label={"Abreviación"} addLabel={true} />
@@ -32,7 +32,7 @@ export const ProvinceShow = props => (
 );
 
 export const ProvinceEdit = props => (
-    <EditGuesser {...props}>
+    <EditGuesser {...props} title={"Editar Provincia"}>
             <InputGuesser source={"code"} label={"Código"} />
             <InputGuesser source={"name"} label={"Nombre"}/>
             <InputGuesser source={"abbreviation"} label={"Abreviación"}/>
