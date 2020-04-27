@@ -9,7 +9,9 @@ import {
 } from "@api-platform/admin";
 
 export const AcademicUnitEdit = props => (
-    <EditGuesser {...props} title={"Editar Unidad Académica"}>
+    <EditGuesser {...props}
+                 title={"Editar Unidad Académica"}
+    >
         <InputGuesser source={"name"} label={"Nombre"}/>
         <InputGuesser source={"phone"} label={"Teléfono"}/>
         <InputGuesser source={"email"} label={"Email"}/>

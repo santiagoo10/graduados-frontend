@@ -1,28 +1,7 @@
 import React from "react";
-import { EditGuesser, ShowGuesser, CreateGuesser,InputGuesser,  FieldGuesser, ListGuesser} from "@api-platform/admin";
-import { AutocompleteInput } from 'react-admin';
+import { EditGuesser, ShowGuesser, InputGuesser,  FieldGuesser, ListGuesser} from "@api-platform/admin";
 
-const choices=[
-        {id: '001', name:'Nacional'},
-        {id: '002', name:'Provincial'}
-];
 
-export const AddressCreate = props => (
-    <CreateGuesser {...props}>
-        <InputGuesser source={"street"} label={"Calle"} />
-        <InputGuesser source={"number"} label={"Número"} />
-        <AutocompleteInput
-            source={"routeType"}
-            choices={choices}
-            optionText="name"
-            optionValue="id"
-            label={"Tipo de ruta"} />
-        <InputGuesser source={"routeNumber"} label={"Número de ruta"} />
-        <InputGuesser source={"km"} />
-        <InputGuesser source={"phoneNumber"} label={"Número de teléfono"} />
-        <InputGuesser source={"zone"} label={"Zona"} />
-    </CreateGuesser>
-);
 
 export const AddressList = props => (
     <ListGuesser {...props}>

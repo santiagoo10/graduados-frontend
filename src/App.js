@@ -4,7 +4,6 @@ import {
     ResourceGuesser
 } from "@api-platform/admin";
 import authProvider from './authProvider';
-import MyLoginPage from './MyLoginPage';
 import {CountryCreate, CountryList, CountryShow, CountryEdit} from "./SmartComponent/countries";
 import {ProvinceList, ProvinceShow, ProvinceEdit, ProvinceCreate} from "./SmartComponent/provinces";
 import {CityCreate, CityEdit, CityList, CityShow} from "./SmartComponent/cities";
@@ -23,7 +22,9 @@ import {SaleShow, SaleEdit, SaleCreate, SaleList} from "./SmartComponent/sales";
 import {GraduateList, GraduateShow} from "./SmartComponent/graduates";
 import {AdminCreate, AdminList, AdminShow, AdminEdit} from "./SmartComponent/admins";
 import {OwnerEdit, OwnerList, OwnerShow} from "./SmartComponent/owners";
-import {AddressCreate, AddressEdit, AddressList, AddressShow} from "./SmartComponent/addresses";
+import {AddressEdit, AddressList, AddressShow} from "./SmartComponent/addresses";
+// import MyLoginPage from "./Componet/MyLoginPage";
+
 import UserIcon from '@material-ui/icons/Group';
 import PublicIcon from '@material-ui/icons/Public';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
@@ -32,14 +33,25 @@ import StoreIcon from '@material-ui/icons/Store';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import CategoryIcon from '@material-ui/icons/Category';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import polyglotI18nProvider from 'ra-i18n-polyglot';
+// import spanishMessages from 'aor-language-spanish';
+import spanishMessages from '@blackbox-vision/ra-language-spanish';
+
 
 
 const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
-
+const i18nProvider = polyglotI18nProvider(() => spanishMessages, 'es');
 
 // eslint-disable-next-line react/display-name
 export default props => (
-    <HydraAdmin entrypoint={entrypoint} authProvider={authProvider} loginPage={MyLoginPage}>
+    <HydraAdmin
+        title={"Aplicación de Beneficios"}
+        entrypoint={entrypoint}
+        // loginPage={MyLoginPage}
+        // authProvider={authProvider}
+        locale={"es"}
+        i18nProvider={i18nProvider}
+    >
 
         <ResourceGuesser name={"addresses"}
                          list={AddressList}

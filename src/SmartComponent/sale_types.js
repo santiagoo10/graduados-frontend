@@ -8,8 +8,6 @@ import {
     CreateGuesser
 } from "@api-platform/admin";
 import {
-    // ReferenceInput,
-    // SelectInput,
     ImageInput,
     ImageField
 } from "react-admin";
@@ -22,7 +20,7 @@ export const SaleTypeList = props => (
 );
 
 export const SaleTypeShow = props => (
-    <ShowGuesser {...props}>
+    <ShowGuesser {...props} title={"Ver Categoria de Beneficio"}>
         <FieldGuesser source={"name"} addLabel={true} label={"Nombre"}/>
         <FieldGuesser source={"description"} addLabel={true} label={"Descripción"}/>
         <ImageField source="image" title="Imágen" />
@@ -32,17 +30,17 @@ export const SaleTypeShow = props => (
 );
 
 export const SaleTypeEdit = props => (
-    <EditGuesser {...props}>
+    <EditGuesser {...props} title={"Editar Categoria de Beneficio"}>
         <InputGuesser source={"name"} label={"Nombre"}/>
-        <InputGuesser source={"description"} label={"Descripción"}/>
+        <InputGuesser source={"description"} multiline label={"Descripción"}/>
     </EditGuesser>
 );
 
 
 export const SaleTypeCreate = props => (
-    <CreateGuesser {...props}>
+    <CreateGuesser {...props} title={"Crear Categoria de Beneficio"}>
         <InputGuesser source={"name"} label={"Nombre"}/>
-        <InputGuesser source={"description"} label={"Descripción"}/>
+        <InputGuesser source={"description"} multiline label={"Descripción"}/>
         <ImageInput source="media_objects" label="Imagen" accept="image/*">
             <ImageField source="image" title="title" />
         </ImageInput>

@@ -12,9 +12,9 @@ export const SaleList = props => (
 );
 
 export const SaleCreate = props => (
-    <CreateGuesser {...props}>
+    <CreateGuesser {...props} title={"Crear Beneficio"}>
             <InputGuesser source={"name"} label={"Nombre"}/>
-            <InputGuesser source={"description"} label={"Descripción"}/>
+            <InputGuesser source={"description"} multiline label={"Descripción"}/>
             <InputGuesser source={"conditionOfSale"} label={"Condición de venta"} />
             <InputGuesser source={"price"} label={"Precio"}/>
             <InputGuesser source={"discount"} label={"Descuento"} />
@@ -27,9 +27,9 @@ export const SaleCreate = props => (
 );
 
 export const SaleEdit = props => (
-    <EditGuesser {...props}>
+    <EditGuesser {...props} title={"Editar Beneficio"}>
         <InputGuesser source={"name"} label={"Nombre"}/>
-        <InputGuesser source={"description"} label={"Descripción"}/>
+        <InputGuesser source={"description"} multiline label={"Descripción"}/>
         <InputGuesser source={"conditionOfSale"} label={"Condición de venta"}/>
         <InputGuesser source={"price"} label={"Precio"}/>
         <InputGuesser source={"discount"} label={"Descuento"}/>
@@ -42,7 +42,7 @@ export const SaleEdit = props => (
 );
 
 export const SaleShow = props => (
-    <ShowGuesser {...props}>
+    <ShowGuesser {...props} title={"Ver Beneficio"}>
         <FieldGuesser source={"name"} label={"Nombre"} addLabel={true} />
         <FieldGuesser source={"description"} label={"Descripción"} addLabel={true} />
         <FieldGuesser source={"conditionOfSale"} label={"Condición de venta"} addLabel={true} />

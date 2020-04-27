@@ -982,6 +982,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@blackbox-vision/ra-language-spanish@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@blackbox-vision/ra-language-spanish/-/ra-language-spanish-3.4.0.tgz#3f983669a7567471885a899a447ff69d977d92d2"
+  integrity sha512-q5/bmz1sHrz5LyoTAwp+0S7Cr2+s9hHiE004//G4Xr/bntwAs1YMmNaKPt93UJ1rICxumgKNq9n2+wgJr64dtQ==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"

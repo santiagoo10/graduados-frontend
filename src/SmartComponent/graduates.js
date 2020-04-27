@@ -1,5 +1,5 @@
 import React from "react";
-import { ShowGuesser, FieldGuesser, ListGuesser } from "@api-platform/admin";
+import {ShowGuesser, FieldGuesser, ListGuesser} from "@api-platform/admin";
 
 export const GraduateList = props => (
     <ListGuesser {...props} title={"Graduados"}>
@@ -37,7 +37,7 @@ export const GraduateShow = props => (
         <FieldGuesser source={"agreementType"} lablel={"Tipo de acuerdo"} addLabel={true} />
         <FieldGuesser source={"wantToUnderTake"} lablel={"¿Te gustaría emprender y tener tu propia empresa?"}
                       addLabel={true} />
-        <FieldGuesser source={"comment"} lablel={"Comentarios, opiniones e ideas"} addLabel={true} />
+        <FieldGuesser source={"comment"} multiline lablel={"Comentarios, opiniones e ideas"} addLabel={true} />
         <FieldGuesser source={"showEmail"} lablel={"Desea hacer público su email"} addLabel={true} />
         <FieldGuesser source={"professions"} label={"Profesiones"} addLabel={true} />
     </ShowGuesser>
