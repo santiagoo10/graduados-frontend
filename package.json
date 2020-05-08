@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@api-platform/admin": "^2.0.1",
+<<<<<<< HEAD
     "@blackbox-vision/ra-language-spanish": "^3.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -11,6 +12,13 @@
     "react": "^16.13.1",
     "react-admin": "latest",
     "react-dom": "^16.13.1",
+=======
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+>>>>>>> a86cb4c99d4f3d8e8db79dc9914fc8bc87b9d51f
     "react-scripts": "3.4.0"
   },
   "scripts": {
@@ -33,10 +41,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
     "uuid": "^7.0.3"
+=======
+>>>>>>> a86cb4c99d4f3d8e8db79dc9914fc8bc87b9d51f
   }
 }
