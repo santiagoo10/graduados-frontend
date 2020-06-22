@@ -1,6 +1,8 @@
 import React from "react";
 import {
     HydraAdmin,
+    hydraDataProvider as baseHydraDataProvider,
+    fetchHydra as baseFetchHydra,
     ResourceGuesser
 } from "@api-platform/admin";
 import authProvider from './authProvider';
@@ -38,6 +40,12 @@ import MyLayout from "./Componet/MyLayout";
 
 const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
 const i18nProvider = polyglotI18nProvider(() => spanishMessages, 'es');
+const fetchHeaders = { Authorization: `Bearer ${window.localStorage.getItem("token")}` };
+const fetchHydra = (url, options={}) => baseFetchHydra(url, {
+    ...options,
+    headers: new Headers(fetchHeaders),
+});
+const dataProvider = baseHydraDataProvider(entrypoint, fetchHydra);
 
 // eslint-disable-next-line react/display-name
 export default props => (
@@ -45,10 +53,11 @@ export default props => (
         layout={MyLayout}
         title={"Aplicación de Beneficios"}
         entrypoint={entrypoint}
-        loginPage={MyLoginPage}
-        authProvider={authProvider}
+        // loginPage={MyLoginPage}
+        // authProvider={authProvider}
         locale={"es"}
         i18nProvider={i18nProvider}
+        // dataProvider={dataProvider}
     >
 
 
