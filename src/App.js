@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
     HydraAdmin,
     ResourceGuesser
@@ -45,8 +45,8 @@ export default props => (
         layout={MyLayout}
         title={"Aplicación de Beneficios"}
         entrypoint={entrypoint}
-        loginPage={MyLoginPage}
-        authProvider={authProvider}
+       // loginPage={MyLoginPage}
+        //authProvider={authProvider}
         locale={"es"}
         i18nProvider={i18nProvider}
     >
