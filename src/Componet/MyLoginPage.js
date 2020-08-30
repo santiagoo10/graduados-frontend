@@ -23,7 +23,7 @@ const CustomLoginForm = withStyles({
 
 const CustomLoginPage = props => (
     <Login
-        loginForm={<CustomLoginForm />}
+        loginform={<CustomLoginForm />}
         {...props}
     />
 );
