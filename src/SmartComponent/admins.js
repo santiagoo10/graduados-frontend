@@ -1,6 +1,6 @@
 import React from "react";
 import {EditGuesser, InputGuesser, ShowGuesser, FieldGuesser, ListGuesser } from "@api-platform/admin";
-import {Create, FormTab, TabbedForm} from "react-admin";
+import { Create, FormTab, TabbedForm, PasswordInput } from "react-admin";
 
 export const AdminList = props => (
     <ListGuesser {...props} title={"Administradores"}>
@@ -37,7 +37,7 @@ export const AdminEdit = props => (
         <InputGuesser source={"position"} label={"Puesto"}/>
         <InputGuesser source={"job"} label={"Función"}/>
         <InputGuesser source={"email"} label={"Email"}/>
-        <InputGuesser source={"password"} label={"Password"}/>
+        <PasswordInput source="password" />
         <InputGuesser source={"username"} label={"Nombre de usuario"}/>
         <InputGuesser source={"isActive"} label={"Activo"}/>
     </EditGuesser>
@@ -58,7 +58,7 @@ export const AdminCreate = props => (
             </FormTab>
             <FormTab label="Datos de la cuenta">
                 <InputGuesser source={"email"} label={"Email"}/>
-                <InputGuesser source={"password"} label={"Password"}/>
+                <PasswordInput source="password" />
                 <InputGuesser source={"username"} label={"Nombre de usuario"}/>
                 <InputGuesser source={"isActive"} label={"Activo"}/>
             </FormTab>

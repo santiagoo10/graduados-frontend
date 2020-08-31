@@ -1,7 +1,8 @@
-import React from "react";
-<<<<<<< HEAD
+import React from 'react';
 import {
     HydraAdmin,
+    hydraDataProvider as baseHydraDataProvider,
+    fetchHydra as baseFetchHydra,
     ResourceGuesser
 } from "@api-platform/admin";
 import authProvider from './authProvider';
@@ -39,6 +40,12 @@ import MyLayout from "./Componet/MyLayout";
 
 const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
 const i18nProvider = polyglotI18nProvider(() => spanishMessages, 'es');
+const fetchHeaders = { Authorization: `Bearer ${window.localStorage.getItem("token")}` };
+const fetchHydra = (url, options={}) => baseFetchHydra(url, {
+    ...options,
+    headers: new Headers(fetchHeaders),
+});
+const dataProvider = baseHydraDataProvider(entrypoint, fetchHydra);
 
 // eslint-disable-next-line react/display-name
 export default props => (
@@ -46,10 +53,11 @@ export default props => (
         layout={MyLayout}
         title={"Aplicación de Beneficios"}
         entrypoint={entrypoint}
-        loginPage={MyLoginPage}
-        authProvider={authProvider}
+        // loginPage={MyLoginPage}
+        // authProvider={authProvider}
         locale={"es"}
         i18nProvider={i18nProvider}
+        // dataProvider={dataProvider}
     >
 
 
@@ -142,14 +150,3 @@ export default props => (
 
 );
 
-
-=======
-import { HydraAdmin } from "@api-platform/admin";
-
-// Replace with your own API entrypoint
-// For instance if https://example.com/api/books is the path to the collection of book resources, then the entrypoint is https://example.com/api
-export default () => (
-    // <HydraAdmin entrypoint="https://demo.api-platform.com" />
-    <HydraAdmin entrypoint="http://localhost:83/oferta/public/api" />
-);
->>>>>>> a86cb4c99d4f3d8e8db79dc9914fc8bc87b9d51f

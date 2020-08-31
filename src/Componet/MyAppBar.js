@@ -28,9 +28,9 @@ const MyAppBar = props => {
                 className={classes.title}
                 id="react-admin-title"
             />
-            {/*<Logo />*/}
+            <Logo />
             {/*<img  src="../Images/logo.jpg" />*/}
-            <span className={classes.spacer} />
+            {/*<span className={classes.spacer} />*/}
         </AppBar>
     );
 };

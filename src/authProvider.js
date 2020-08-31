@@ -1,3 +1,52 @@
+// import decodeJwt from 'jwt-decode';
+//
+//
+// const authProvider = {
+//     login: ({ username, password }) =>  {
+//         const request = new Request('http://localhost:83/oferta/public/login', {
+//             method: 'POST',
+//             body: JSON.stringify({ username, password }),
+//             headers: new Headers({ 'Content-Type': 'application/json' }),
+//         });
+//         return fetch(request)
+//             .then(response => {
+//                 if (response.status < 200 || response.status >= 300) {
+//                     throw new Error(response.statusText);
+//                 }
+//                 return response.json();
+//             })
+//             .then(({ token }) => {
+//                 localStorage.setItem('token', token);
+//             });
+//     },
+//     logout: () => {
+//         localStorage.removeItem('token');
+//         return Promise.resolve();
+//     },
+//     checkAuth: () => {
+//         const token = localStorage.getItem('token');
+//         if (token) {
+//             const decodedToken = decodeJwt(token);
+//             const tokenExpired =
+//                 new Date().setUTCSeconds(decodedToken.exp) < new Date();
+//             tokenExpired
+//                 ? Promise.reject({ redirectTo: '/login' })
+//                 : Promise.resolve();
+//         } else {
+//             return Promise.reject();
+//         }
+//     },
+//     checkError: error => Promise.resolve(),
+//     getPermissions: params => Promise.resolve(),
+//     ...
+// };
+
+// export default authProvider;
+
+
+
+
+
 import {
     AUTH_LOGIN,
     AUTH_LOGOUT,
@@ -33,17 +82,20 @@ const authProvier = (type, params) => {
             .then(response => {
                 // acá entra
                 if (response.status < 200 || response.status >= 300) {
+                    console.log("Credenciales invpalidas");
                     console.log(response.statusText);
                     throw new Error(response.statusText);
                 }
-                console.log("acá viene el location");
+                console.log("Credenciales válidas");
                 console.log(response.headers.location);
                 return response.headers;
             }).then(
                 ({token}) => {
 
+                    // puede ir por acà el problema!!!
                     console.log("Entra por localstorage.");
                     localStorage.setItem('token', token);
+
                 }
             );
     }
@@ -54,8 +106,10 @@ const authProvier = (type, params) => {
     }
     // called when the API returns an error
     if (type === AUTH_ERROR) {
+        // const status  = params.message.status;
         const {status} = params;
         if (status === 401 || status === 403) {
+            console.log("Ocurrio un error");
             localStorage.removeItem('username');
             return Promise.reject();
         }
