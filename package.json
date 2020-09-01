@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@api-platform/admin": "^2.2.1",
-    "@blackbox-vision/ra-language-spanish": "^3.5.0",
+    "@api-platform/admin": "^2.0.1",
+    "@api-platform/api-doc-parser": "^0.10.1",
+    "@blackbox-vision/ra-language-spanish": "^3.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -39,6 +40,7 @@
   "devDependencies": {
     "envify": "^4.1.0",
     "eslint-plugin-react": "^7.19.0",
+    "react-router-dom": "^5.2.0",
     "terser": "^5.2.1",
     "uglifyify": "^5.0.2",
     "uuid": "^7.0.3"
