@@ -68,10 +68,12 @@ const authProvier = (type, params) => {
         // accept all username/password combinations
         // return Promise.resolve();
 
-        const request = new Request('http://localhost:83/oferta/public/login', {
+        const loginUrl = process.env.REACT_APP_API_LOGIN;
+        const request = new Request(loginUrl, {
             method: 'POST',
             body: JSON.stringify({username, password}),
             headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'})
+            // headers: new Headers({'Content-Type': 'application/json'})
         });
         return fetchHydra(
             request,
@@ -87,14 +89,24 @@ const authProvier = (type, params) => {
                     throw new Error(response.statusText);
                 }
                 console.log("Credenciales válidas");
+                console.log('====');
+                let location = response.headers.get('Location');
                 console.log(response.headers.location);
+                console.log('====');
+                console.log(location);
+                console.log('====');
+                console.log('====');
                 return response.headers;
             }).then(
                 ({token}) => {
-
                     // puede ir por acà el problema!!!
                     console.log("Entra por localstorage.");
+
+                    console.log('este es el toquen');
+                    console.log(token);
+                    localStorage.setItem('username', username);
                     localStorage.setItem('token', token);
+                    // window.location.replace('/');
 
                 }
             );
@@ -117,9 +129,13 @@ const authProvier = (type, params) => {
     }
     // called when the user navigates to a new location
     if (type === AUTH_CHECK) {
-        return localStorage.getItem('username')
-            ? Promise.resolve()
-            : Promise.reject();
+
+         // return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
+
+
+         return localStorage.getItem('username')
+             ? Promise.resolve()
+             : Promise.reject();
     }
     return Promise.reject('Unknown method');
 };
