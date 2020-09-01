@@ -1,10 +1,12 @@
 import React from 'react';
 import {
     HydraAdmin,
-    hydraDataProvider as baseHydraDataProvider,
+   ResourceGuesser,
     fetchHydra as baseFetchHydra,
-    ResourceGuesser
+    hydraDataProvider as baseHydraDataProvider,
 } from "@api-platform/admin";
+import parseHydraDocumentation from "@api-platform/api-doc-parser/lib/hydra/parseHydraDocumentation";
+import { Redirect, Route } from "react-router-dom";
 import authProvider from './authProvider';
 import {CountryCreate, CountryList, CountryShow, CountryEdit} from "./SmartComponent/countries";
 import {ProvinceList, ProvinceShow, ProvinceEdit, ProvinceCreate} from "./SmartComponent/provinces";
@@ -40,12 +42,36 @@ import MyLayout from "./Componet/MyLayout";
 
 const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
 const i18nProvider = polyglotI18nProvider(() => spanishMessages, 'es');
-const fetchHeaders = { Authorization: `Bearer ${window.localStorage.getItem("token")}` };
-const fetchHydra = (url, options={}) => baseFetchHydra(url, {
+
+const fetchHeaders = {"Authorization": `Basic ${btoa(`${localStorage.getItem('username')}:${localStorage.getItem('token')}`)}`};
+
+const fetchHydra = (url, options = {}) => baseFetchHydra(url, {
     ...options,
     headers: new Headers(fetchHeaders),
 });
-const dataProvider = baseHydraDataProvider(entrypoint, fetchHydra);
+
+const apiDocumentationParser = entrypoint => parseHydraDocumentation(entrypoint, { headers: new Headers(fetchHeaders) })
+    .then(
+        ({ api }) => ({ api }),
+        (result) => {
+            switch (result.status) {
+                case 401:
+                    return Promise.resolve({
+                        api: result.api,
+                        customRoutes: [
+                            <Route path="/" render={() => {
+                                return window.localStorage.getItem("token") ? window.location.reload() : <Redirect to="#/login" />
+                            }} />
+                        ],
+                    });
+
+                default:
+                    return Promise.reject(result);
+            }
+        },
+    );
+
+const dataProvider = baseHydraDataProvider(entrypoint, fetchHydra, apiDocumentationParser);
 
 // eslint-disable-next-line react/display-name
 export default props => (
@@ -53,11 +79,11 @@ export default props => (
         layout={MyLayout}
         title={"Aplicación de Beneficios"}
         entrypoint={entrypoint}
-        // loginPage={MyLoginPage}
-        // authProvider={authProvider}
+        loginPage={MyLoginPage}
+        authProvider={authProvider}
         locale={"es"}
         i18nProvider={i18nProvider}
-        // dataProvider={dataProvider}
+        dataProvider={ dataProvider }
     >
 
 
