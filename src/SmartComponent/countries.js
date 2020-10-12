@@ -12,7 +12,7 @@ import { TextField } from "react-admin";
 export const CountryList = (props) => (
   <ListGuesser {...props}>
     <FieldGuesser source="code" />
-    <TextField label="País" source="country.name" />
+    <TextField label="País" source="name" />
   </ListGuesser>
 );
 
