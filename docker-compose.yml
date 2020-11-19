@@ -1,0 +1,42 @@
+---
+version: '3.4'
+
+#x-cache-from:
+#  - &api-cache-from
+#    cache_from:
+#      - ${NGINX_IMAGE:-quay.io/api-platform/nginx}
+#      - ${PHP_IMAGE:-quay.io/api-platform/php}
+
+services:
+
+  admin:
+    build:
+      context: ./ofert-admin
+      target: api_platform_admin_development
+      cache_from:
+        - ${ADMIN_IMAGE:-quay.io/api-platform/admin}
+    image: ${ADMIN_IMAGE:-quay.io/api-platform/admin}
+    tty: true # https://github.com/facebook/create-react-app/issues/8688
+    depends_on:
+      - dev-tls
+    volumes:
+      - ./admin:/usr/src/admin:rw,cached
+      - dev-certs:/usr/src/admin/node_modules/webpack-dev-server/ssl:rw,nocopy
+    ports:
+      - target: 3000
+        published: 444
+        protocol: tcp
+
+  dev-tls:
+    build:
+      context: ./docker/dev-tls
+    volumes:
+      - dev-certs:/certs:rw
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+
+volumes:
+  db-data: {}
+  dev-certs: {}
