@@ -20,7 +20,6 @@ export const ProvinceCreate = (props) => (
     <InputGuesser source={"code"} label={"Código"} />
     <InputGuesser source={"name"} label={"Nombre"} />
     <InputGuesser source={"abbreviation"} label={"Abreviación"} />
-
     <ReferenceInput
       source="country"
       reference="countries"
