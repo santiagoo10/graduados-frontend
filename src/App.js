@@ -71,7 +71,7 @@ import {
   AdminEdit,
 } from "./SmartComponent/admins";
 import { OwnerEdit, OwnerList, OwnerShow } from "./SmartComponent/owners";
-import MyLoginPage from "./Componet/MyLoginPage";
+import LoginPage from "./Componet/LoginPage";
 import UserIcon from "@material-ui/icons/Group";
 import PublicIcon from "@material-ui/icons/Public";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
@@ -82,7 +82,7 @@ import CategoryIcon from "@material-ui/icons/Category";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import polyglotI18nProvider from "ra-i18n-polyglot";
 import spanishMessages from "@blackbox-vision/ra-language-spanish";
-import MyLayout from "./Componet/MyLayout";
+import MainLayout from "./Componet/MainLayout";
 
 const i18nProvider = polyglotI18nProvider(() => spanishMessages, "es");
 
@@ -132,12 +132,13 @@ const dataProvider = baseHydraDataProvider(
 );
 
 // eslint-disable-next-line react/display-name
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (props) => (
   <HydraAdmin
-    layout={MyLayout}
+    layout={MainLayout}
     title={"Aplicación de Beneficios"}
     entrypoint={entrypoint}
-    loginPage={MyLoginPage}
+    loginPage={LoginPage}
     authProvider={authProvider}
     locale={"es"}
     i18nProvider={i18nProvider}
