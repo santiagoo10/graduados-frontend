@@ -1,127 +1,65 @@
-// import decodeJwt from 'jwt-decode';
-//
-//
-// const authProvider = {
-//     login: ({ username, password }) =>  {
-//         const request = new Request('http://localhost:83/oferta/public/login', {
-//             method: 'POST',
-//             body: JSON.stringify({ username, password }),
-//             headers: new Headers({ 'Content-Type': 'application/json' }),
-//         });
-//         return fetch(request)
-//             .then(response => {
-//                 if (response.status < 200 || response.status >= 300) {
-//                     throw new Error(response.statusText);
-//                 }
-//                 return response.json();
-//             })
-//             .then(({ token }) => {
-//                 localStorage.setItem('token', token);
-//             });
-//     },
-//     logout: () => {
-//         localStorage.removeItem('token');
-//         return Promise.resolve();
-//     },
-//     checkAuth: () => {
-//         const token = localStorage.getItem('token');
-//         if (token) {
-//             const decodedToken = decodeJwt(token);
-//             const tokenExpired =
-//                 new Date().setUTCSeconds(decodedToken.exp) < new Date();
-//             tokenExpired
-//                 ? Promise.reject({ redirectTo: '/login' })
-//                 : Promise.resolve();
-//         } else {
-//             return Promise.reject();
-//         }
-//     },
-//     checkError: error => Promise.resolve(),
-//     getPermissions: params => Promise.resolve(),
-//     ...
-// };
-
-// export default authProvider;
-
-
-
-
-
 import {
-    AUTH_LOGIN,
-    AUTH_LOGOUT,
-    AUTH_ERROR,
-    AUTH_CHECK
-} from 'react-admin';
-import fetchHydra from "@api-platform/admin/lib/hydra/fetchHydra";
+  AUTH_LOGIN,
+  AUTH_LOGOUT,
+  AUTH_ERROR,
+  AUTH_CHECK,
+  AUTH_GET_PERMISSIONS,
+} from "react-admin";
+import jwt_decode from "jwt-decode";
 
-const authProvier = (type, params) => {
+// Change this to be your own login check route.
+const login_uri = process.env.REACT_APP_API_ENTRYPOINT + "/login_check";
 
-    // called when the user attempts to log in
-    if (type === AUTH_LOGIN) {
-        const {username} = params;
-        const {password} = params;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default (type, params) => {
+  switch (type) {
+    case AUTH_LOGIN:
+      const { username, password } = params;
+      const request = new Request(`${login_uri}`, {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+        headers: new Headers({ "Content-Type": "application/json" }),
+      });
 
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
+      return fetch(request)
+        .then((response) => {
+          if (response.status < 200 || response.status >= 300)
+            throw new Error(response.statusText);
 
-        // accept all username/password combinations
-        // return Promise.resolve();
-
-        const request = new Request('http://localhost:83/oferta/public/login', {
-            method: 'POST',
-            body: JSON.stringify({username, password}),
-            headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'})
+          return response.json();
+        })
+        .then(({ token }) => {
+          localStorage.setItem("token", token); // The JWT token is stored in the browser's local storage
+          const decodedToken = jwt_decode(token);
+          localStorage.setItem("role", decodedToken.roles); // The Role is stored in the browser's local storage
+          window.location.replace("/");
         });
-        return fetchHydra(
-            request,
-            {
-            credentials: 'same-origin'
-            }
-            )
-            .then(response => {
-                // acá entra
-                if (response.status < 200 || response.status >= 300) {
-                    console.log("Credenciales invpalidas");
-                    console.log(response.statusText);
-                    throw new Error(response.statusText);
-                }
-                console.log("Credenciales válidas");
-                console.log(response.headers.location);
-                return response.headers;
-            }).then(
-                ({token}) => {
 
-                    // puede ir por acà el problema!!!
-                    console.log("Entra por localstorage.");
-                    localStorage.setItem('token', token);
+    case AUTH_LOGOUT:
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      window.location.replace("/");
+      break;
 
-                }
-            );
-    }
-    // called when the user clicks on the logout button
-    if (type === AUTH_LOGOUT) {
-        localStorage.removeItem('username');
-        return Promise.resolve();
-    }
-    // called when the API returns an error
-    if (type === AUTH_ERROR) {
-        // const status  = params.message.status;
-        const {status} = params;
-        if (status === 401 || status === 403) {
-            console.log("Ocurrio un error");
-            localStorage.removeItem('username');
-            return Promise.reject();
-        }
-        return Promise.resolve();
-    }
-    // called when the user navigates to a new location
-    if (type === AUTH_CHECK) {
-        return localStorage.getItem('username')
-            ? Promise.resolve()
-            : Promise.reject();
-    }
-    return Promise.reject('Unknown method');
+    case AUTH_ERROR:
+      if (401 === params.status || 403 === params.status) {
+        localStorage.removeItem("token");
+
+        return Promise.reject();
+      }
+      break;
+
+    case AUTH_CHECK:
+      return localStorage.getItem("token")
+        ? Promise.resolve()
+        : Promise.reject();
+
+    case AUTH_GET_PERMISSIONS:
+      return localStorage.getItem("role")
+        ? Promise.resolve()
+        : Promise.reject();
+
+    default:
+      return Promise.resolve();
+  }
 };
-
-export default authProvier;
