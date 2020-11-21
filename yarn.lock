@@ -2,10 +2,11 @@
 # yarn lockfile v1
 
 
-"@api-platform/admin@^2.0.1":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@api-platform/admin/-/admin-2.3.0.tgz#3e2af6c4fd7edc4556b57af2533899de1c5fdec2"
-  integrity sha512-TU3JrUOlL3cBgf+zyZ4v2a5KDPvZt2XrS7OvDetPpVqnkwLQ2I64mQUOUwJgELndlTrm+VmHgDGo4fQ5v0Jjtw==
+"@api-platform/admin@^2.2.1":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@api-platform/admin/-/admin-2.2.3.tgz#d6d517966a092412b7d0b934a527f4c91fb9c707"
+  integrity sha512-Q1mJ504HaaQO6m8F8Hy9DSHdaPJiy08epZGv3r84aGmB3WTXa/UVRQ8NTCnkD+tsmlrrduBpxa0hA92qyifixQ==
+
   dependencies:
     "@api-platform/api-doc-parser" "^0.9.1"
     history "^4.7.2"
@@ -1186,12 +1187,19 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+<<<<<<< HEAD
+"@blackbox-vision/ra-language-spanish@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@blackbox-vision/ra-language-spanish/-/ra-language-spanish-3.5.0.tgz#df587043c9a6ecd78e2f9d8820d65f600435d6a9"
+  integrity sha512-LoKkgqqIZK10FOZp222srDd3FQYIdtw6j2upbvH2Sblbk8IPWEaWYrN/zf1Roa441q26VWGgqtYNVZMq4MtZrw==
+=======
 "@blackbox-vision/ra-language-spanish@^3.4.0":
   version "3.8.6"
   resolved "https://registry.yarnpkg.com/@blackbox-vision/ra-language-spanish/-/ra-language-spanish-3.8.6.tgz#3b6a15f689f9d7adffed6719b21b4c0e1ad581f1"
   integrity sha512-WBpC+oT53yaXAIXhQusYjMpuSx0NVtBV8lI6rprcbuwrd6PRmH2cx+T/eDA9+/tJxEcleGifp3HSYK2UzDoIDg==
   dependencies:
     ra-core "^3.8.4"
+>>>>>>> develop
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -1807,9 +1815,15 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.5":
+<<<<<<< HEAD
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
+  integrity sha512-7+2BITlgjgDhH0vvwZU/HZJVyk+2XUlvxXe8dFMedNX/aMkaOq++rMAFXc0tM7ij15QaWlbdQASBR9dihi+bDQ==
+=======
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
   integrity sha512-3c+yGKvVP5Y9TYBEibGNR+kLtijnj7mYrXRg+WpFb2X9xm04g/DXYkfg4hmzJQosc9snFNUPkbYIhu+KAm6jJw==
+>>>>>>> develop
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -2185,9 +2199,15 @@ ajv-keywords@^3.1.0, ajv-keywords@^3.4.1, ajv-keywords@^3.5.2:
   integrity sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==
 
 ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4:
+<<<<<<< HEAD
+  version "6.12.4"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.4.tgz#0614facc4522127fa713445c6bfd3ebd376e2234"
+  integrity sha512-eienB2c9qVQs2KWexhkrdMLVDoIQCz5KSeLxwg9Lzk4DOfBtIK9PQwwufcsn1jjGuf9WZmqPMbGxOzfcuphJCQ==
+=======
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
+>>>>>>> develop
   dependencies:
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
@@ -3076,10 +3096,17 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
+<<<<<<< HEAD
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001111:
+  version "1.0.30001120"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001120.tgz#cd21d35e537214e19f7b9f4f161f7b0f2710d46c"
+  integrity sha512-JBP68okZs1X8D7MQTY602jxMYBmXEKOFkzTBaNSkubooMPFOAv2TXWaKle7qgHpjLDhUzA/TMT0qsNleVyXGUQ==
+=======
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001157:
   version "1.0.30001159"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001159.tgz#bebde28f893fa9594dadcaa7d6b8e2aa0299df20"
   integrity sha512-w9Ph56jOsS8RL20K9cLND3u/+5WASWdhC/PPrf+V3/HsM3uHOavWOR1Xzakbv4Puo/srmPHudkmCRWM7Aq+/UA==
+>>>>>>> develop
 
 canonicalize@^1.0.1:
   version "1.0.5"
