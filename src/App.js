@@ -128,7 +128,8 @@ const apiDocumentationParser = (entrypoint) =>
 const dataProvider = baseHydraDataProvider(
   entrypoint,
   fetchHydra,
-  apiDocumentationParser
+  apiDocumentationParser,
+    // true
 );
 
 // eslint-disable-next-line react/display-name
