@@ -13,23 +13,18 @@ import {
     FormTab,
     NumberInput,
     ReferenceInput,
-    SelectInput,
     TabbedForm,
     TextInput,
     PasswordInput, ReferenceField, TextField,
 } from "react-admin";
 import RichTextInput from 'ra-input-rich-text';
 
-const choices = [
-    {id: '001', name: 'Nacional'},
-    {id: '002', name: 'Provincial'}
-];
 
  export const StoreCreate = props => (
      <Create{...props} title={"Crear Patrocinador"}>
          <TabbedForm>
              <FormTab label={"Patrocinador"}>
-                 <InputGuesser source={"name"} label={"Razón Social"}/>
+                 <TextInput source={"name"} label={"Razón Social"}/>
                  <RichTextInput source={"description"} label={"Descripción"}/>
                  <InputGuesser source={"email"} label={"Email"}/>
                  <InputGuesser source={"phone"} label={"Teléfono"}/>
@@ -50,17 +45,17 @@ const choices = [
                      <AutocompleteInput optionText="name" />
                  </ReferenceInput>
              </FormTab>
-             <FormTab label={"Contacto"}>
-                 <TextInput source="owner.name" label={"Nombre"}/>
-                 <TextInput source="owner.lastName" label={"Apellido"}/>
-                 <TextInput source="owner.dni" label={"DNI"}/>
-                 <TextInput source="owner.cuit" label={"CUIT"}/>
-                 <TextInput source="owner.cellPhone" label={"Celular"}/>
-                 <TextInput source="owner.username" label={"Nombre de usuario"}/>
-                 <TextInput source="owner.email" label={"Email"}/>
-                 <PasswordInput source="owner.password" label={"Password"}/>
-                 <BooleanInput source="owner.isActive" label={"Activo"}/>
-             </FormTab>
+             {/*<FormTab label={"Contacto"}>*/}
+             {/*    <TextInput source="owner.name" label={"Nombre"}/>*/}
+             {/*    <TextInput source="owner.lastName" label={"Apellido"}/>*/}
+             {/*    <TextInput source="owner.dni" label={"DNI"}/>*/}
+             {/*    <TextInput source="owner.cuit" label={"CUIT"}/>*/}
+             {/*    <TextInput source="owner.cellPhone" label={"Celular"}/>*/}
+             {/*    <TextInput source="owner.username" label={"Nombre de usuario"}/>*/}
+             {/*    <TextInput source="owner.email" label={"Email"}/>*/}
+             {/*    <PasswordInput source="owner.password" label={"Password"}/>*/}
+             {/*    <BooleanInput source="owner.isActive" label={"Activo"}/>*/}
+             {/*</FormTab>*/}
          </TabbedForm>
      </Create>
  );

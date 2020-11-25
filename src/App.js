@@ -82,9 +82,17 @@ import CategoryIcon from "@material-ui/icons/Category";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import polyglotI18nProvider from "ra-i18n-polyglot";
 import spanishMessages from "@blackbox-vision/ra-language-spanish";
+import englishMessages from 'ra-language-english';
 import MainLayout from "./Componet/MainLayout";
 
-const i18nProvider = polyglotI18nProvider(() => spanishMessages, "es");
+
+const messages = {
+  es: spanishMessages,
+  en: englishMessages,
+};
+
+const i18nProvider = polyglotI18nProvider(locale => messages[locale], 'es');
+// const i18nProvider = polyglotI18nProvider(() => spanishMessages, "es");
 
 const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
 const fetchHeaders = {
@@ -125,6 +133,7 @@ const apiDocumentationParser = (entrypoint) =>
       }
     }
   );
+
 const dataProvider = baseHydraDataProvider(
   entrypoint,
   fetchHydra,
@@ -132,8 +141,6 @@ const dataProvider = baseHydraDataProvider(
     // true
 );
 
-// eslint-disable-next-line react/display-name
-// eslint-disable-next-line import/no-anonymous-default-export
 export default (props) => (
   <HydraAdmin
     layout={MainLayout}
@@ -141,7 +148,6 @@ export default (props) => (
     entrypoint={entrypoint}
     loginPage={LoginPage}
     authProvider={authProvider}
-    locale={"es"}
     i18nProvider={i18nProvider}
     dataProvider={dataProvider}
   >

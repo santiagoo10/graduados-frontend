@@ -1,5 +1,8 @@
 import React from 'react';
-import { Login, LoginForm } from 'react-admin';
+import {
+    Login,
+    LoginForm
+} from 'react-admin';
 import { withStyles } from '@material-ui/core/styles';
 import ImageBackground from "../Images/background_a.jpg";
 import ImageLogo from "../Images/cropped-favicon.png";

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   AUTH_LOGIN,
   AUTH_LOGOUT,
@@ -10,7 +11,6 @@ import jwt_decode from "jwt-decode";
 // Change this to be your own login check route.
 const login_uri = process.env.REACT_APP_API_ENTRYPOINT + "/login_check";
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default (type, params) => {
   console.log(login_uri);
   switch (type) {
