@@ -1,4 +1,3 @@
-import React from "react";
 import {
   AUTH_LOGIN,
   AUTH_LOGOUT,

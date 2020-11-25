@@ -92,7 +92,6 @@ const messages = {
 };
 
 const i18nProvider = polyglotI18nProvider(locale => messages[locale], 'es');
-// const i18nProvider = polyglotI18nProvider(() => spanishMessages, "es");
 
 const entrypoint = process.env.REACT_APP_API_ENTRYPOINT;
 const fetchHeaders = {

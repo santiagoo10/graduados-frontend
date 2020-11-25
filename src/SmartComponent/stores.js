@@ -17,15 +17,17 @@ import {
     TextInput,
     PasswordInput, ReferenceField, TextField,
 } from "react-admin";
-import RichTextInput from 'ra-input-rich-text';
 
 
  export const StoreCreate = props => (
      <Create{...props} title={"Crear Patrocinador"}>
-         <TabbedForm>
+         <TabbedForm
+             variant={"standard"}
+             margin={"normal"}
+         >
              <FormTab label={"Patrocinador"}>
-                 <TextInput source={"name"} label={"Razón Social"}/>
-                 <RichTextInput source={"description"} label={"Descripción"}/>
+                 <InputGuesser source={"name"} label={"Razón Social"}/>
+                 <InputGuesser source={"description"} label={"Descripción"}/>
                  <InputGuesser source={"email"} label={"Email"}/>
                  <InputGuesser source={"phone"} label={"Teléfono"}/>
              </FormTab>
@@ -37,25 +39,19 @@ import RichTextInput from 'ra-input-rich-text';
                  <TextInput
                      source="address.phoneNumber"
                      label="Número de teléfono"/>
-                 <ReferenceInput
-                     label="Zona"
-                     source="zone" reference="zones"
-                     filterToQuery={(searchText) => ({ name: searchText })}
-                 >
-                     <AutocompleteInput optionText="name" />
-                 </ReferenceInput>
              </FormTab>
-             {/*<FormTab label={"Contacto"}>*/}
-             {/*    <TextInput source="owner.name" label={"Nombre"}/>*/}
-             {/*    <TextInput source="owner.lastName" label={"Apellido"}/>*/}
-             {/*    <TextInput source="owner.dni" label={"DNI"}/>*/}
-             {/*    <TextInput source="owner.cuit" label={"CUIT"}/>*/}
-             {/*    <TextInput source="owner.cellPhone" label={"Celular"}/>*/}
-             {/*    <TextInput source="owner.username" label={"Nombre de usuario"}/>*/}
-             {/*    <TextInput source="owner.email" label={"Email"}/>*/}
-             {/*    <PasswordInput source="owner.password" label={"Password"}/>*/}
-             {/*    <BooleanInput source="owner.isActive" label={"Activo"}/>*/}
-             {/*</FormTab>*/}
+             <FormTab label={"Contacto"}>
+                 {/*// el problema está acá cuando cargo el owner*/}
+                 <TextInput source="owner.name" label={"Nombre"}/>
+                 <TextInput source="owner.lastName" label={"Apellido"}/>
+                 <TextInput source="owner.dni" label={"DNI"}/>
+                 <TextInput source="owner.cuit" label={"CUIT"}/>
+                 <TextInput source="owner.cellPhone" label={"Celular"}/>
+                 <TextInput source="owner.username" label={"Nombre de usuario"}/>
+                 <TextInput source="owner.email" label={"Email"}/>
+                 <PasswordInput source="owner.password" label={"Password"}/>
+                 <BooleanInput source="owner.isActive" label={"Activo"}/>
+             </FormTab>
          </TabbedForm>
      </Create>
  );
