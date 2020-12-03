@@ -7,13 +7,15 @@ import {
   FieldGuesser,
   ListGuesser
 } from '@api-platform/admin';
-import { SelectArrayInput } from 'react-admin';
+import {
+  SelectArrayInput,
+} from 'react-admin';
 
 export const UserList = props => (
   <ListGuesser {...props} title={'Usuarios'}>
     <FieldGuesser source={'email'} label={'Email'}/>
     <FieldGuesser source={'username'} label={'Nombre de usuario'}/>
-    <FieldGuesser source={'isActive'} label={'Activo'}/>
+    <FieldGuesser source={'roles'} label={'Roles'}/>
   </ListGuesser>
 );
 

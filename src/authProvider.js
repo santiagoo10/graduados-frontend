@@ -56,8 +56,10 @@ export default (type, params) => {
         : Promise.reject();
 
     case AUTH_GET_PERMISSIONS:
-      return localStorage.getItem("role")
-        ? Promise.resolve()
+      const role =  localStorage.getItem("role");
+      console.log(role);
+      return role
+        ? Promise.resolve(role)
         : Promise.reject();
 
     default:

@@ -65,13 +65,7 @@ import {
   SaleList,
 } from './SmartComponent/sales';
 import { GraduateList, GraduateShow } from './SmartComponent/graduates';
-import {
-  AdminCreate,
-  AdminList,
-  AdminShow,
-  AdminEdit,
-} from './SmartComponent/admins';
-import { OwnerEdit, OwnerList, OwnerShow, OwnerCreate } from './SmartComponent/owners';
+
 import LoginPage from './Componet/LoginPage';
 import UserIcon from '@material-ui/icons/Group';
 import PublicIcon from '@material-ui/icons/Public';
@@ -80,7 +74,6 @@ import SchoolIcon from '@material-ui/icons/School';
 import StoreIcon from '@material-ui/icons/Store';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import CategoryIcon from '@material-ui/icons/Category';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import spanishMessages from '@blackbox-vision/ra-language-spanish';
 import englishMessages from 'ra-language-english';
@@ -151,13 +144,13 @@ export default (props) => (
     dataProvider={dataProvider}
   >
     <ResourceGuesser
-      name={'admins'}
-      edit={AdminEdit}
-      list={AdminList}
-      show={AdminShow}
-      create={AdminCreate}
-      options={{ label: 'Administradores' }}
-      icon={SupervisorAccountIcon}
+      name="sales"
+      list={SaleList}
+      create={SaleCreate}
+      edit={SaleEdit}
+      show={SaleShow}
+      icon={LoyaltyIcon}
+      options={{ label: 'Beneficios' }}
     />
     <ResourceGuesser
       name={'graduates'}
@@ -173,15 +166,7 @@ export default (props) => (
       edit={UserEdit}
       icon={UserIcon}
     />
-    <ResourceGuesser
-      name="sales"
-      list={SaleList}
-      create={SaleCreate}
-      edit={SaleEdit}
-      show={SaleShow}
-      icon={LoyaltyIcon}
-      options={{ label: 'Beneficios' }}
-    />
+
     <ResourceGuesser
       name="sale_types"
       icon={CategoryIcon}
@@ -190,15 +175,6 @@ export default (props) => (
       edit={SaleTypeEdit}
       create={SaleTypeCreate}
       options={{ label: 'Categorias de Beneficios' }}
-    />
-
-    <ResourceGuesser
-      name={'owners'}
-      options={{ label: 'Contacto de patrocinadores' }}
-      create={OwnerCreate}
-      show={OwnerShow}
-      list={OwnerList}
-      edit={OwnerEdit}
     />
     <ResourceGuesser
       name="stores"
