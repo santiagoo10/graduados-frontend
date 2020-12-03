@@ -1,63 +1,42 @@
-import React from "react";
+import React from 'react';
 import {
   InputGuesser,
   FieldGuesser,
   ListGuesser,
   ShowGuesser,
-  EditGuesser, CreateGuesser
+  EditGuesser,
+  CreateGuesser
 } from '@api-platform/admin';
 import {
-    BooleanInput,
-    AutocompleteInput,
-    Create,
-    FormTab,
-    NumberInput,
-    ReferenceInput,
-    TabbedForm,
-    TextInput,
-    PasswordInput, ReferenceField, TextField,
-} from "react-admin";
+  AutocompleteInput,
+  NumberInput,
+  ReferenceInput,
+  TextInput,
+  ReferenceField,
+  TextField,
+} from 'react-admin';
 
-
- export const StoreCreate = props => (
-     <Create{...props} title={"Crear Patrocinador"}>
-         <TabbedForm
-             variant={"standard"}
-             margin={"normal"}
-         >
-             <FormTab label={"Patrocinador"}>
-                 <InputGuesser source={"name"} label={"Razón Social"}/>
-                 <InputGuesser source={"description"} label={"Descripción"}/>
-                 <InputGuesser source={"email"} label={"Email"}/>
-                 <InputGuesser source={"phone"} label={"Teléfono"}/>
-
-               <ReferenceInput
-                 source="owner"
-                 reference="owners"
-                 label="Responsable"
-                 filterToQuery={(searchText) => ({ name: searchText })}
-               >
-                 <AutocompleteInput optionText="name" />
-               </ReferenceInput>
-
-
-
-             </FormTab>
-
-             <FormTab label={"Domicilio"}>
-                 <TextInput source="address.name" label={"Nombre"}/>
-                 <TextInput source="address.street" label={"Calle"}/>
-                 <NumberInput source="address.number" label={"Número"}/>
-                 <TextInput
-                     source="address.phoneNumber"
-                     label="Número de teléfono"/>
-             </FormTab>
-
-
-
-         </TabbedForm>
-     </Create>
- );
+export const StoreCreate = props => (
+  <CreateGuesser{...props} title={'Crear Patrocinador'}>
+    <InputGuesser source={'name'} label={'Razón Social'}/>
+    <InputGuesser source={'description'} label={'Descripción'}/>
+    <InputGuesser source={'phone'} label={'Teléfono'}/>
+    <ReferenceInput
+      source="owner"
+      reference="users"
+      label="Responsable"
+      filterToQuery={(searchText) => ({ username: searchText })}
+    >
+      <AutocompleteInput optionText="username"/>
+    </ReferenceInput>
+    <TextInput source="address.name" label={'Nombre'}/>
+    <TextInput source="address.street" label={'Calle'}/>
+    <NumberInput source="address.number" label={'Número'}/>
+    <TextInput
+      source="address.phoneNumber"
+      label="Número de teléfono"/>
+  </CreateGuesser>
+);
 
 export const StoreList = props => (
     <ListGuesser {...props} title={"Patrocinadores"}>
@@ -73,7 +52,6 @@ export const StoreShow = props => (
     <ShowGuesser {...props} title={"Ver Patrocinador"}>
         <FieldGuesser source={"name"} addLabel={true} label={"Razón Social"}/>
         <FieldGuesser source={"description"} addLabel={true} label={"Descripción"}/>
-        <FieldGuesser source={"email"} addLabel={true} label={"Email"}/>
         <FieldGuesser source={"phone"} addLabel={true} label={"Teléfono"}/>
         <FieldGuesser source={"address"} addLabel={true} label={"Domicilio"}/>
         <FieldGuesser source={"owner"} addLabel={true} label={"Contacto"}/>
@@ -86,7 +64,6 @@ export const StoreEdit = props => (
     <EditGuesser {...props} title={"Editar Patrocinador"}>
         <InputGuesser source={"name"} label={"Razón Social"}/>
         <InputGuesser source={"description"} label={"Descripción"}/>
-        <InputGuesser source={"email"} label={"Email"}/>
         <InputGuesser source={"phone"} label={"Teléfono"}/>
     </EditGuesser>
 );

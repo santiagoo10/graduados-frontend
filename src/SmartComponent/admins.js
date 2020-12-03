@@ -1,5 +1,11 @@
 import React from "react";
-import {EditGuesser, InputGuesser, ShowGuesser, FieldGuesser, ListGuesser } from "@api-platform/admin";
+import {
+  EditGuesser,
+  InputGuesser,
+  ShowGuesser,
+  FieldGuesser,
+  ListGuesser
+} from "@api-platform/admin";
 import { Create, FormTab, TabbedForm, PasswordInput } from "react-admin";
 
 export const AdminList = props => (
