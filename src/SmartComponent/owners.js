@@ -1,8 +1,21 @@
 import React from "react";
-import { InputGuesser, EditGuesser, ShowGuesser, FieldGuesser, ListGuesser} from "@api-platform/admin";
+import { CreateGuesser, InputGuesser, EditGuesser, ShowGuesser, FieldGuesser, ListGuesser} from "@api-platform/admin";
+
+export const OwnerCreate = props => (
+    <CreateGuesser {...props} title={"Crear Contacto de Patrocinador"}>
+        <InputGuesser source={"name"} label={"Nombre"} />
+        <InputGuesser source={"lastName"} label={"Apellido"}/>
+        <InputGuesser source={"dni"} label={"DNI"}/>
+        <InputGuesser source={"cuit"} label={"CUIT"}/>
+        <InputGuesser source={"cellPhone"} label={"Celular"}/>
+        <InputGuesser source={"email"} label={"Email"}/>
+        <InputGuesser source={"password"} label={"Password"}/>
+        <InputGuesser source={"username"} label={"Nombre de usuario"}/>
+        <InputGuesser source={"isActive"} label={"Activo"}/>
+    </CreateGuesser>
+);
 
 export const OwnerList = props => (
-
     <ListGuesser {...props} title={"Contactos de Patrocinadores"}>
         <FieldGuesser source={"name"} label={"Nombre"}/>
         <FieldGuesser source={"lastName"}  label={"Apellido"}/>

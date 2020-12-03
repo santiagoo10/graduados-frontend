@@ -1,11 +1,11 @@
 import React from "react";
 import {
-    InputGuesser,
-    FieldGuesser,
-    ListGuesser,
-    ShowGuesser,
-    EditGuesser
-} from "@api-platform/admin";
+  InputGuesser,
+  FieldGuesser,
+  ListGuesser,
+  ShowGuesser,
+  EditGuesser, CreateGuesser
+} from '@api-platform/admin';
 import {
     BooleanInput,
     AutocompleteInput,
@@ -30,6 +30,18 @@ import {
                  <InputGuesser source={"description"} label={"Descripción"}/>
                  <InputGuesser source={"email"} label={"Email"}/>
                  <InputGuesser source={"phone"} label={"Teléfono"}/>
+
+               <ReferenceInput
+                 source="owner"
+                 reference="owners"
+                 label="Responsable"
+                 filterToQuery={(searchText) => ({ name: searchText })}
+               >
+                 <AutocompleteInput optionText="name" />
+               </ReferenceInput>
+
+
+
              </FormTab>
 
              <FormTab label={"Domicilio"}>
@@ -40,18 +52,9 @@ import {
                      source="address.phoneNumber"
                      label="Número de teléfono"/>
              </FormTab>
-             <FormTab label={"Contacto"}>
-                 {/*// el problema está acá cuando cargo el owner*/}
-                 <TextInput source="owner.name" label={"Nombre"}/>
-                 <TextInput source="owner.lastName" label={"Apellido"}/>
-                 <TextInput source="owner.dni" label={"DNI"}/>
-                 <TextInput source="owner.cuit" label={"CUIT"}/>
-                 <TextInput source="owner.cellPhone" label={"Celular"}/>
-                 <TextInput source="owner.username" label={"Nombre de usuario"}/>
-                 <TextInput source="owner.email" label={"Email"}/>
-                 <PasswordInput source="owner.password" label={"Password"}/>
-                 <BooleanInput source="owner.isActive" label={"Activo"}/>
-             </FormTab>
+
+
+
          </TabbedForm>
      </Create>
  );

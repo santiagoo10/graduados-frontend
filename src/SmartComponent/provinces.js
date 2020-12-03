@@ -35,10 +35,10 @@ export const ProvinceList = (props) => (
   <ListGuesser {...props} title={"Provincias"}>
     <FieldGuesser source={"code"} label={"Código"} />
     <FieldGuesser source={"name"} label={"Nombre"} />
-    <FieldGuesser source={"abbreviation"} label={"Abreviación"} />
-    <ReferenceField label="País" source="country" reference="countries">
-      <TextField source="name" />
-    </ReferenceField>
+      <FieldGuesser source={"abbreviation"} label={"Abreviación"}/>
+      <ReferenceField label="País" source="country" reference="countries">
+          <TextField source="name"/>
+      </ReferenceField>
   </ListGuesser>
 );
 
