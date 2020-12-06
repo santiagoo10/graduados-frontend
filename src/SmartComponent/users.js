@@ -8,14 +8,25 @@ import {
   ListGuesser
 } from '@api-platform/admin';
 import {
+  ArrayField,
   SelectArrayInput,
+  SingleFieldList,
+  ChipField,
 } from 'react-admin';
+import StringToLabelObject from '../Componet/StringToLabelObject';
 
 export const UserList = props => (
   <ListGuesser {...props} title={'Usuarios'}>
     <FieldGuesser source={'email'} label={'Email'}/>
     <FieldGuesser source={'username'} label={'Nombre de usuario'}/>
-    <FieldGuesser source={'roles'} label={'Roles'}/>
+    <ArrayField source="roles">
+      <SingleFieldList>
+        <StringToLabelObject>
+          <ChipField source="label"/>
+        </StringToLabelObject>
+      </SingleFieldList>
+    </ArrayField>
+
   </ListGuesser>
 );
 
@@ -44,7 +55,13 @@ export const UserShow = props => (
     <FieldGuesser
       source={'updatedAt'} label={'Actualizado'} addLabel={true}
     />
-    <FieldGuesser source={'roles'} label={'Roles'} addLabel={true} />
+    <ArrayField source="roles">
+      <SingleFieldList>
+        <StringToLabelObject>
+          <ChipField source="label"/>
+        </StringToLabelObject>
+      </SingleFieldList>
+    </ArrayField>
   </ShowGuesser>
 );
 
