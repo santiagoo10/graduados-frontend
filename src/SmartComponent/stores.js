@@ -32,6 +32,9 @@ export const StoreCreate = props => (
     <TextInput source="address.name" label={'Nombre'}/>
     <TextInput source="address.street" label={'Calle'}/>
     <NumberInput source="address.number" label={'Número'}/>
+    <NumberInput source="address.latitude" label={'Lat'}/>
+    <NumberInput source="address.longitude" label={'Long'}/>
+
     <TextInput
       source="address.phoneNumber"
       label="Número de teléfono"/>
@@ -42,7 +45,7 @@ export const StoreList = props => (
     <ListGuesser {...props} title={"Patrocinadores"}>
         <FieldGuesser source={"name"} label={"Razón Social"}/>
         <FieldGuesser source={"phone"} label={"Teléfono"}/>
-        <ReferenceField label="Contacto" source="owner" reference="owners">
+        <ReferenceField label="Contacto" source="owner" reference="users">
             <TextField source="username" />
         </ReferenceField>
     </ListGuesser>
@@ -54,7 +57,9 @@ export const StoreShow = props => (
         <FieldGuesser source={"description"} addLabel={true} label={"Descripción"}/>
         <FieldGuesser source={"phone"} addLabel={true} label={"Teléfono"}/>
         <FieldGuesser source={"address"} addLabel={true} label={"Domicilio"}/>
-        <FieldGuesser source={"owner"} addLabel={true} label={"Contacto"}/>
+      <ReferenceField label="Contacto" source="owner" reference="users">
+        <TextField source="username" />
+      </ReferenceField>
         <FieldGuesser source={"createdAt"} addLabel={true} label={"Creado"}/>
         <FieldGuesser source={"updatedAt"} addLabel={true} label={"Actualizado"}/>
     </ShowGuesser>

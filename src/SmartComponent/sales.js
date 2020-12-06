@@ -1,23 +1,25 @@
 import React from "react";
 import { ShowGuesser, EditGuesser, CreateGuesser, InputGuesser, FieldGuesser, ListGuesser} from "@api-platform/admin";
+import { ReferenceField, TextField } from 'react-admin';
 
 export const SaleList = props => (
-    <ListGuesser {...props} title={"Beneficios"}>
-        <FieldGuesser source={"name"} label={"Nombre"} />
-        <FieldGuesser source={"description"} label={"Descripción"} />
-        <FieldGuesser source={"price"} label={"Precio"} />
-        <FieldGuesser source={"saleType"} label={"Categoria de Beneficio"} />
-        <FieldGuesser source={"store"} label={"Patrocinador"} />
-    </ListGuesser>
+  <ListGuesser {...props} title={'Beneficios'}>
+    <FieldGuesser source={'name'} label={'Nombre'}/>
+    <FieldGuesser source={'description'} label={'Descripción'}/>
+    <ReferenceField label="Categoria" source="saleType" reference="sale_types">
+      <TextField source="name"/>
+    </ReferenceField>
+    <ReferenceField label="Patrocinador" source="store" reference="stores">
+      <TextField source="name"/>
+    </ReferenceField>
+  </ListGuesser>
 );
 
 export const SaleCreate = props => (
     <CreateGuesser {...props} title={"Crear Beneficio"}>
             <InputGuesser source={"name"} label={"Nombre"}/>
             <InputGuesser source={"description"} multiline label={"Descripción"}/>
-            <InputGuesser source={"conditionOfSale"} label={"Condición de venta"} />
-            <InputGuesser source={"price"} label={"Precio"}/>
-            <InputGuesser source={"discount"} label={"Descuento"} />
+
             <InputGuesser source={"datePublication"} label={"Fecha de publicación"} />
             <InputGuesser source={"dateExpiration"} label={"Fecha de expiración"} />
             <InputGuesser source={"revised"} label={"Revisado"} />
@@ -30,9 +32,6 @@ export const SaleEdit = props => (
     <EditGuesser {...props} title={"Editar Beneficio"}>
         <InputGuesser source={"name"} label={"Nombre"}/>
         <InputGuesser source={"description"} multiline label={"Descripción"}/>
-        <InputGuesser source={"conditionOfSale"} label={"Condición de venta"}/>
-        <InputGuesser source={"price"} label={"Precio"}/>
-        <InputGuesser source={"discount"} label={"Descuento"}/>
         <InputGuesser source={"datePublication"} label={"Fecha de publicación"}/>
         <InputGuesser source={"dateExpiration"} label={"Fecha de expiración"}/>
         <InputGuesser source={"revised"} label={"Revisado"}/>
@@ -42,18 +41,22 @@ export const SaleEdit = props => (
 );
 
 export const SaleShow = props => (
-    <ShowGuesser {...props} title={"Ver Beneficio"}>
-        <FieldGuesser source={"name"} label={"Nombre"} addLabel={true} />
-        <FieldGuesser source={"description"} label={"Descripción"} addLabel={true} />
-        <FieldGuesser source={"conditionOfSale"} label={"Condición de venta"} addLabel={true} />
-        <FieldGuesser source={"price"} label={"Precio"} addLabel={true} />
-        <FieldGuesser source={"discount"} label={"Descuento"} addLabel={true} />
-        <FieldGuesser source={"datePublication"} label={"Fecha de publicación"} addLabel={true} />
-        <FieldGuesser source={"dateExpiration"} label={"Fecha de expiración"} addLabel={true} />
-        <FieldGuesser source={"revised"} label={"Revisado"} addLabel={true} />
-        <FieldGuesser source={"saleType"} label={"Categoria de Beneficio"} addLabel={true} />
-        <FieldGuesser source={"store"} label={"Patrocinador"} addLabel={true} />
-        <FieldGuesser source={"createdAt"} label={"Creado"} addLabel={true} />
-        <FieldGuesser source={"updatedAt"} label={"Actualizado"} addLabel={true} />
-    </ShowGuesser>
+  <ShowGuesser {...props} title={'Ver Beneficio'}>
+    <FieldGuesser source={'name'} label={'Nombre'} addLabel={true}/>
+    <FieldGuesser source={'description'} label={'Descripción'} addLabel={true}/>
+    <FieldGuesser source={'datePublication'} label={'Fecha de publicación'} addLabel={true}/>
+    <FieldGuesser source={'dateExpiration'} label={'Fecha de expiración'} addLabel={true}/>
+    <FieldGuesser source={'revised'} label={'Revisado'} addLabel={true}/>
+
+    <ReferenceField label="Categoria" source="saleType" reference="sale_types">
+      <TextField source="name"/>
+    </ReferenceField>
+    <ReferenceField label="Patrocinador" source="store" reference="stores">
+      <TextField source="name"/>
+    </ReferenceField>
+
+
+    <FieldGuesser source={'createdAt'} label={'Creado'} addLabel={true}/>
+    <FieldGuesser source={'updatedAt'} label={'Actualizado'} addLabel={true}/>
+  </ShowGuesser>
 );

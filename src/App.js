@@ -165,6 +165,7 @@ export default (props) => (
       show={UserShow}
       edit={UserEdit}
       icon={UserIcon}
+      options={{ label: 'Usuarios' }}
     />
 
     <ResourceGuesser
