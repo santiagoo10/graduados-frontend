@@ -53,7 +53,7 @@ export default (type, params) => {
     case AUTH_CHECK:
       return localStorage.getItem("token")
         ? Promise.resolve()
-        : Promise.reject();
+        : Promise.reject({ message: 'login.required' });
 
     case AUTH_GET_PERMISSIONS:
       const role =  localStorage.getItem("role");

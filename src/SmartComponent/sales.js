@@ -15,17 +15,20 @@ export const SaleList = props => (
   </ListGuesser>
 );
 
-export const SaleCreate = props => (
-    <CreateGuesser {...props} title={"Crear Beneficio"}>
-            <InputGuesser source={"name"} label={"Nombre"}/>
-            <InputGuesser source={"description"} multiline label={"Descripción"}/>
-
-            <InputGuesser source={"datePublication"} label={"Fecha de publicación"} />
-            <InputGuesser source={"dateExpiration"} label={"Fecha de expiración"} />
-            <InputGuesser source={"revised"} label={"Revisado"} />
-            <InputGuesser source={"saleType"} label={"Categoria de Beneficio"}/>
-            <InputGuesser source={"store"} label={"Patrocinador"}/>
-    </CreateGuesser>
+// export const SaleCreate = props => (
+export const SaleCreate = ({
+  permissions,
+  ...props
+}) => (
+  <CreateGuesser {...props} title={'Crear Beneficio'}>
+    <InputGuesser source={'name'} label={'Nombre'}/>
+    <InputGuesser source={'description'} multiline label={'Descripción'}/>
+    <InputGuesser source={'datePublication'} label={'Fecha de publicación'}/>
+    <InputGuesser source={'dateExpiration'} label={'Fecha de expiración'}/>
+    <InputGuesser source={'revised'} label={'Revisado'}/>
+    <InputGuesser source={'saleType'} label={'Categoria de Beneficio'}/>
+    {permissions === 'ROLE_ADMIN,ROLE_USER' && <InputGuesser source={'store'} label={'Patrocinador'}/>}
+  </CreateGuesser>
 );
 
 export const SaleEdit = props => (
