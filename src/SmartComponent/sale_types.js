@@ -10,12 +10,7 @@ import {
 import {
   ImageInput,
   ImageField,
-  ArrayField,
-  SingleFieldList,
-  ReferenceField,
-  FunctionField, TextField,
 } from 'react-admin';
-import StringToLabelObject from '../Componet/StringToLabelObject';
 
 export const SaleTypeList = props => (
     <ListGuesser {...props} title={"Categorias de beneficios"}>
@@ -50,7 +45,6 @@ export const SaleTypeCreate = props => (
         <ImageInput source="media_objects" label="Imagen" accept="image/*">
             <ImageField source="image" title="title" />
         </ImageInput>
-
     </CreateGuesser>
 );
 

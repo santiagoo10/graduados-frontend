@@ -167,7 +167,6 @@ export default (props) => (
       icon={UserIcon}
       options={{ label: 'Usuarios' }}
     />
-
     <ResourceGuesser
       name="sale_types"
       icon={CategoryIcon}

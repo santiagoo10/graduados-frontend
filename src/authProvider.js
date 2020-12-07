@@ -11,7 +11,7 @@ import jwt_decode from "jwt-decode";
 const login_uri = process.env.REACT_APP_API_ENTRYPOINT + "/login_check";
 
 export default (type, params) => {
-  console.log(login_uri);
+  // console.log(login_uri);
   switch (type) {
     case AUTH_LOGIN:
       const { username, password } = params;
@@ -23,10 +23,9 @@ export default (type, params) => {
 
       return fetch(request)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response.status < 200 || response.status >= 300)
             throw new Error(response.statusText);
-
           return response.json();
         })
         .then(({ token }) => {
@@ -40,6 +39,7 @@ export default (type, params) => {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
       window.location.replace("/");
+      return Promise.resolve();
       break;
 
     case AUTH_ERROR:
