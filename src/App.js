@@ -153,12 +153,6 @@ export default (props) => (
       options={{ label: 'Beneficios' }}
     />
     <ResourceGuesser
-      name={'graduates'}
-      list={GraduateList}
-      show={GraduateShow}
-      options={{ label: 'Graduados' }}
-    />
-    <ResourceGuesser
       name="users"
       create={UserCreate}
       list={UserList}
@@ -236,5 +230,7 @@ export default (props) => (
       icon={PublicIcon}
       options={{ label: 'Paises' }}
     />
+    <ResourceGuesser name={'addresses'}/>
+
   </HydraAdmin>
 );
