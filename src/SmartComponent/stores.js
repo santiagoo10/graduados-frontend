@@ -56,10 +56,10 @@ export const StoreShow = props => (
     <FieldGuesser source={'name'} addLabel={true} label={'Razón Social'}/>
     <FieldGuesser source={'description'} addLabel={true} label={'Descripción'}/>
     <FieldGuesser source={'phone'} addLabel={true} label={'Teléfono'}/>
-    <ReferenceField reference="addresses" source="id" label="Domicilio">
+    <ReferenceField reference="addresses" source="id" label="Domicilio" link="show">
       <TextField source={'name'}/>
     </ReferenceField>
-    <ReferenceField label="Contacto" source="owner" reference="users">
+    <ReferenceField label="Contacto" source="owner" reference="users"  link="show">
       <TextField source="username"/>
     </ReferenceField>
     <FieldGuesser source={'createdAt'} addLabel={true} label={'Creado'}/>

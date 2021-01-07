@@ -78,6 +78,13 @@ import polyglotI18nProvider from 'ra-i18n-polyglot';
 import spanishMessages from '@blackbox-vision/ra-language-spanish';
 import englishMessages from 'ra-language-english';
 import MainLayout from './Componet/MainLayout';
+import {
+  AddressEdit,
+  AddressShow,
+  AddressList
+
+
+} from './SmartComponent/addresses';
 
 const messages = {
   es: spanishMessages,
@@ -230,7 +237,12 @@ export default (props) => (
       icon={PublicIcon}
       options={{ label: 'Paises' }}
     />
-    <ResourceGuesser name={'addresses'}/>
+    <ResourceGuesser
+      name={'addresses'}
+      edit={AddressEdit}
+      show={AddressShow}
+      list={AddressList}
+    />
 
   </HydraAdmin>
 );
