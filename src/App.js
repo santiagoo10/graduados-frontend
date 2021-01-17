@@ -64,7 +64,6 @@ import {
   SaleCreate,
   SaleList,
 } from './SmartComponent/sales';
-import { GraduateList, GraduateShow } from './SmartComponent/graduates';
 
 import LoginPage from './Componet/LoginPage';
 import UserIcon from '@material-ui/icons/Group';
@@ -82,9 +81,8 @@ import {
   AddressEdit,
   AddressShow,
   AddressList
-
-
 } from './SmartComponent/addresses';
+import Dashboard from './Componet/Dashboard';
 
 const messages = {
   es: spanishMessages,
@@ -140,7 +138,7 @@ const dataProvider = baseHydraDataProvider(
   apiDocumentationParser
 );
 
-export default (props) => (
+export default () => (
   <HydraAdmin
     layout={MainLayout}
     title={'Aplicación de Beneficios'}
@@ -149,7 +147,9 @@ export default (props) => (
     authProvider={authProvider}
     i18nProvider={i18nProvider}
     dataProvider={dataProvider}
+    dashboard={Dashboard}
   >
+
     <ResourceGuesser
       name="sales"
       list={SaleList}
