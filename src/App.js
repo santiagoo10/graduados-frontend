@@ -148,6 +148,7 @@ export default () => (
     i18nProvider={i18nProvider}
     dataProvider={dataProvider}
     dashboard={Dashboard}
+    disableTelemetry
   >
 
     <ResourceGuesser
