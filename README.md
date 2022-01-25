@@ -8,7 +8,24 @@ Frontend de graduados
 
 ## Install
 
-´´´
-git checkout <url>
-´´´
+### clone repository
+```
+git clone <url>
+```
+
+### install dependencies
+
+```
+sudo npm install
+
+sudo npm update
+```
+
+### local configuration
+
+create file .env.local
+
+```
+REACT_APP_API_ENTRYPOINT=http://localhost:250/api
+```
 
